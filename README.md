@@ -74,20 +74,20 @@ CREATE TABLE labenu_students (<br>
     birthdate DATE NOT NULL,<br>
     hobby VARCHAR(256) NOT NULL, <br>
     mission_id INT(64), <br>
+    FOREIGN KEY(hobby) REFERENCES labenu_hobbies(hobby),<br>
     FOREIGN KEY(mission_id) REFERENCES labenu_missions(id)
 );<br>
 
 CREATE TABLE labenu_hobbies (<br>
     id INT(12) PRIMARY KEY,<br>
-    students_hobby VARCHAR(256) NOT NULL, <br>
-    FOREIGN KEY(students_hobby) REFERENCES labenu_students(hobby)<br>
+    hobby VARCHAR(256) NOT NULL UNIQUE, <br>
 );<br>
 
 CREATE TABLE labenu_students_hobbies (<br>
-    hoddy_id INT(12) PRIMARY KEY,<br>
-    student_id INT(12) PRIMARY KEY,<br>
-    FOREIGN KEY(student_id) REFERENCES labenu_students(id) PRIMARY KEY, <br>
-    FOREIGN KEY(hobby_id) REFERENCES labenu_hobbies(id) PRIMARY KEY, <br>
+    hobby_id INT(12) PRIMARY KEY,<br>
+    student_id INT(64) NOT NULL UNIQUE,<br>
+    FOREIGN KEY(student_id) REFERENCES labenu_students(id) <br>
+    FOREIGN KEY(hobby_id) REFERENCES labenu_hobbies(id) <br>
 );<br>
 
 CREATE TABLE labenu_teachers (<br>
@@ -95,22 +95,22 @@ CREATE TABLE labenu_teachers (<br>
     name VARCHAR(128) NOT NULL,<br>
     email VARCHAR(64) NOT NULL,<br>
     birthdate DATE NOT NULL,<br>
-    specialities VARCHAR(256) NOT NULL, <br>
+    speciality VARCHAR(256) NOT NULL, <br>
     mission_id INT(64), <br>
+    FOREIGN KEY(speciality) REFERENCES labenu_specialities(speciality),<br>
     FOREIGN KEY(mission_id) REFERENCES labenu_missions(id)
 );<br>
 
 CREATE TABLE labenu_specialities (<br>
     id INT(12) PRIMARY KEY,<br>
-    speciality VARCHAR(12) NOT NULL, <br>
-    FOREIGN KEY(speciality) REFERENCES labenu_teachers(specialities)<br>
+    speciality VARCHAR(12) NOT NULL UNIQUE <br>
 );<br>
 
 CREATE TABLE labenu_teachers_specialities (<br>
     speciality_id INT(64) PRIMARY KEY,<br>
-    teacher_id INT(64) PRIMARY KEY,<br>
-    FOREIGN KEY(teacher_id) REFERENCES labenu_teachers(id) PRIMARY KEY, <br>
-    FOREIGN KEY(speciality_id) REFERENCES labenu_specialities(id) PRIMARY KEY, <br>
+    teacher_id INT(64) NOT NULL UNIQUE,<br>
+    FOREIGN KEY(teacher_id) REFERENCES labenu_teachers(id), <br>
+    FOREIGN KEY(speciality_id) REFERENCES labenu_specialities(id) <br>
 );<br>
 
 ***

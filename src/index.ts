@@ -2,6 +2,7 @@ import express, { Express } from "express";
 import knex from "knex";
 import dotenv from "dotenv";
 import { Server } from "http";
+import createMission from "./endpoints/createMission";
 
 dotenv.config()
 
@@ -19,6 +20,12 @@ export const connection: knex = knex({
 const app: Express = express()
 app.use(express.json())
 
+//-------------------------
+
+app.put("/mission", createMission)
+
+
+//-------------------------
 
 const server: Server = app.listen(3003, ()=>{
     if (server) {
