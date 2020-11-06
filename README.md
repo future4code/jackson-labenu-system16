@@ -72,18 +72,20 @@ CREATE TABLE labenu_students (<br>
     name VARCHAR(128) NOT NULL,<br>
     email VARCHAR(64) NOT NULL,<br>
     birthdate DATE NOT NULL,<br>
-    hobbies VARCHAR(256) NOT NULL, <br>
+    hobby VARCHAR(256) NOT NULL, <br>
     mission_id INT(64), <br>
     FOREIGN KEY(mission_id) REFERENCES labenu_missions(id)
 );<br>
 
 CREATE TABLE labenu_hobbies (<br>
     id INT(12) PRIMARY KEY,<br>
-    hobby VARCHAR(256) NOT NULL, <br>
-    FOREIGN KEY(hobby) REFERENCES labenu_students(hobbies)<br>
+    students_hobby VARCHAR(256) NOT NULL, <br>
+    FOREIGN KEY(students_hobby) REFERENCES labenu_students(hobby)<br>
 );<br>
 
 CREATE TABLE labenu_students_hobbies (<br>
+    hoddy_id INT(12) PRIMARY KEY,<br>
+    student_id INT(12) PRIMARY KEY,<br>
     FOREIGN KEY(student_id) REFERENCES labenu_students(id) PRIMARY KEY, <br>
     FOREIGN KEY(hobby_id) REFERENCES labenu_hobbies(id) PRIMARY KEY, <br>
 );<br>
@@ -105,8 +107,8 @@ CREATE TABLE labenu_specialities (<br>
 );<br>
 
 CREATE TABLE labenu_teachers_specialities (<br>
-    teacher_id INT(64) PRIMARY KEY,<br>
     speciality_id INT(64) PRIMARY KEY,<br>
+    teacher_id INT(64) PRIMARY KEY,<br>
     FOREIGN KEY(teacher_id) REFERENCES labenu_teachers(id) PRIMARY KEY, <br>
     FOREIGN KEY(speciality_id) REFERENCES labenu_specialities(id) PRIMARY KEY, <br>
 );<br>
