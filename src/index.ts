@@ -3,6 +3,7 @@ import knex from "knex";
 import dotenv from "dotenv";
 import { Server } from "http";
 import createMission from "./endpoints/createMission";
+import createStudent from "./endpoints/createStudent";
 
 dotenv.config()
 
@@ -24,6 +25,7 @@ app.use(express.json())
 
 app.put("/mission", createMission)
 
+app.put("/student", createStudent)
 
 //-------------------------
 

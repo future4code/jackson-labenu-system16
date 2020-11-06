@@ -72,9 +72,7 @@ CREATE TABLE labenu_students (<br>
     name VARCHAR(128) NOT NULL,<br>
     email VARCHAR(64) NOT NULL,<br>
     birthdate DATE NOT NULL,<br>
-    hobby VARCHAR(256) NOT NULL, <br>
     mission_id INT(64), <br>
-    FOREIGN KEY(hobby) REFERENCES labenu_hobbies(hobby),<br>
     FOREIGN KEY(mission_id) REFERENCES labenu_missions(id)
 );<br>
 
