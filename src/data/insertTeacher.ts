@@ -5,38 +5,14 @@ export default async function insertTeacher(
     name:string,
     email: string,
     birthdate:string,
-    REACT: boolean,
-    REDUX: boolean,
-    CSS: boolean,
-    TESTES: boolean,
-    TYPESCRIPT: boolean,
-    PROGRAMAÇÃO_ORIENTADA_A_OBJETOS: boolean,
-    BACKEND: boolean
+    react: boolean,
+    redux: boolean,
+    css: boolean,
+    testes: boolean,
+    typescript: boolean,
+    programacao_orientada_a_objetos: boolean,
+    backend: boolean
     ) {
-
-    let speciality = []
-
-    if(REACT = true){
-        speciality.push('REACT')
-    }
-    if(REDUX = true){
-        speciality.push('REDUX')
-    }
-    if(CSS = true){
-        speciality.push('CSS')
-    }
-    if(TESTES = true){
-        speciality.push('TESTES')
-    }
-    if(TYPESCRIPT = true){
-        speciality.push('TYPESCRIPT')
-    }
-    if(PROGRAMAÇÃO_ORIENTADA_A_OBJETOS = true){
-        speciality.push('PROGRAMAÇÃO ORIENTADA A OBJETOS')
-    }
-    if(BACKEND = true){
-        speciality.push('BACKEND')
-    }
 
     await connection
     .insert({
@@ -44,8 +20,20 @@ export default async function insertTeacher(
         name,
         email,
         birthdate,
-        speciality
     })
     .into("labenu_teachers")
+
+    await connection
+    .insert({
+        teacher_id: id,
+        react,
+        redux,
+        css,
+        testes,
+        typescript,
+        programacao_orientada_a_objetos,
+        backend,
+    })
+    .into("labenu_teacher_specialities")
 
 }
