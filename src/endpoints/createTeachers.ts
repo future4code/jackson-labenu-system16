@@ -19,21 +19,7 @@ export default async function createTeacher(
 
             return
         }
-        // if(
-        //     !(req.body.REACT === true || false) &&
-        //     !(req.body.REDUX === true || false) &&
-        //     !(req.body.CSS === true || false) &&
-        //     !(req.body.TESTES === true || false) &&
-        //     !(req.body.TYPESCRIPT === true || false) &&
-        //     !(req.body.PROGRAMAÇÃO_ORIENTADA_A_OBJETOS === true || false) &&
-        //     !(req.body.BACKEND === true || false)
-        //     ){
-        //     res.status(400).send({
-        //         message: "As especialidades devem ser preenchidas com 'true' para especialidades que possui e 'false' para as que não possui"
-        //     })
-            
-        //     return
-        // }
+    
         if(
             req.body.react === false &&
             req.body.redux === false &&

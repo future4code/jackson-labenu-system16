@@ -5,6 +5,9 @@ import { Server } from "http";
 import createMission from "./endpoints/createMission";
 import createStudent from "./endpoints/createStudent";
 import createTeacher from "./endpoints/createTeachers";
+import editStudentMission from "./endpoints/editStudentMission";
+import editTeacherMission from "./endpoints/editTeacherMission";
+import getStudentById from "./endpoints/getStudentById";
 
 dotenv.config()
 
@@ -29,6 +32,12 @@ app.put("/mission", createMission)
 app.put("/student", createStudent)
 
 app.put("/teacher", createTeacher)
+
+app.post("/student/editmission/:id", editStudentMission)
+
+app.post("/teacher/editmission/:id", editTeacherMission)
+
+app.get("/student/age/:id", getStudentById)
 
 //-------------------------
 
