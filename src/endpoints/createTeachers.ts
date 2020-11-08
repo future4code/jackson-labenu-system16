@@ -11,17 +11,10 @@ export default async function createTeacher(
         if(
             !req.body.name ||
             !req.body.email ||
-            !req.body.birthdate ||
-            !req.body.REACT ||
-            !req.body.REDUX ||
-            !req.body.CSS ||
-            !req.body.TESTES ||
-            !req.body.TYPESCRIPT ||
-            !req.body.PROGRAMAÇÃO_ORIENTADA_A_OBJETOS ||
-            !req.body.BACKEND
+            !req.body.birthdate
         ){
             res.status(400).send({
-                message: "Opa! Todos os campos devem ser preenchidos"
+                message: "Opa! Os campos 'name', 'email' e 'birthdate' devem ser preenchidos"
             })
 
             return
@@ -42,13 +35,13 @@ export default async function createTeacher(
         //     return
         // }
         if(
-            req.body.REACT === false &&
-            req.body.REDUX === false &&
-            req.body.CSS ===  false &&
-            req.body.TESTES === false &&
-            req.body.TYPESCRIPT === false &&
-            req.body.PROGRAMAÇÃO_ORIENTADA_A_OBJETOS === false &&
-            req.body.BACKEND === false
+            req.body.react === false &&
+            req.body.redux === false &&
+            req.body.css ===  false &&
+            req.body.testes === false &&
+            req.body.typescript === false &&
+            req.body.programacao_orientada_a_objetos === false &&
+            req.body.backend === false
             ){
             res.status(400).send({
                 message: "Pelo menos 1 especialidade deve ser preenchida com 'true'."
@@ -65,13 +58,13 @@ export default async function createTeacher(
             req.body.name,
             req.body.email,
             moment(req.body.birthdate, "DD/MM/YYYY").format("YYYY-MM-DD"),
-            req.body.REACT,
-            req.body.REDUX,
-            req.body.CSS,
-            req.body.TESTES,
-            req.body.TYPESCRIPT,
-            req.body.PROGRAMAÇÃO_ORIENTADA_A_OBJETOS,
-            req.body.BACKEND
+            req.body.react,
+            req.body.redux,
+            req.body.css,
+            req.body.testes,
+            req.body.typescript,
+            req.body.programacao_orientada_a_objetos,
+            req.body.backend
         )
 
         // Responder a requisição
@@ -81,13 +74,13 @@ export default async function createTeacher(
             name: req.body.name,
             email: req.body.email, 
             birthdate: req.body.birthdate,
-            REACT: req.body.REACT,
-            REDUX: req.body.REDUX,
-            CSS: req.body.CSS,
-            TESTES: req.body.TESTES,
-            TYPESCRIPT: req.body.TYPESCRIPT,
-            PROGRAMAÇÃO_ORIENTADA_A_OBJETOS: req.body.PROGRAMAÇÃO_ORIENTADA_A_OBJETOS,
-            BACKEND: req.body.BACKEND
+            react: req.body.react,
+            redux: req.body.redux,
+            css: req.body.css,
+            testes: req.body.testes,
+            typescript: req.body.typescript,
+            programacao_orientada_a_objetos: req.body.programacao_orientada_a_objetos,
+            backend: req.body.backend
         })
 
     } catch (error) {
