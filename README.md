@@ -78,12 +78,13 @@ CREATE TABLE labenu_students (<br>
 
 CREATE TABLE labenu_hobbies (<br>
     id INT(12) PRIMARY KEY,<br>
-    hobby VARCHAR(256) NOT NULL UNIQUE, <br>
+    hobby VARCHAR(256) NOT NULL <br>
 );<br>
 
 CREATE TABLE labenu_students_hobbies (<br>
     hobby_id INT(12) PRIMARY KEY,<br>
     student_id INT(64) NOT NULL UNIQUE,<br>
+    PRIMARY KEY(hobby_id, student_id), <br>
     FOREIGN KEY(student_id) REFERENCES labenu_students(id) <br>
     FOREIGN KEY(hobby_id) REFERENCES labenu_hobbies(id) <br>
 );<br>
@@ -100,9 +101,18 @@ CREATE TABLE labenu_teachers (<br>
 );<br>
 
 CREATE TABLE labenu_specialities (<br>
-    id INT(12) PRIMARY KEY,<br>
-    speciality VARCHAR(12) NOT NULL UNIQUE <br>
+    id INT(12) PRIMARY KEY AUTO_INCREMENT,<br>
+    speciality VARCHAR(64) NOT NULL UNIQUE <br>
+    CONSTRAINT force_upper_case CHECK(BINARY speciality = UPPER(speciality))<br>
 );<br>
+    - INSERT INTO labenu_specialities(speciality)
+        VALUES  ('REACT'),
+                ('REDUX'),
+                ('CSS'),
+                ('TESTES'),
+                ('TYPESCRIPT'),
+                ('PROGRAMAÇÃO ORIENTADA A OBJETOS'),
+                ('BACKEND');
 
 CREATE TABLE labenu_teachers_specialities (<br>
     speciality_id INT(64) PRIMARY KEY,<br>
